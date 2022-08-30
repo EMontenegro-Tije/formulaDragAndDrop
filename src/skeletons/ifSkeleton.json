@@ -1,0 +1,40 @@
+{
+  "If": {
+    "If": [
+      {
+        "eq": [
+          { "source_code": "turismocity" },
+          { "search": ["productData", "source"] }
+        ]
+      },
+      "and_",
+      {
+        "eq": [{ "currency": "ARS" }, { "search": ["priceData", "currency"] }]
+      },
+      "and_",
+      {
+        "lt": [
+          { "date": "2022-10-01" },
+          { "search": ["productData", "dateIn"] }
+        ]
+      }
+    ],
+    "then": [
+      {
+        "assign": [
+          {
+            "total_amount": 0,
+            "label": "monto total",
+            "show": true
+          },
+          {
+            "add": [
+              { "search": ["var", "fee", "value"] },
+              { "search": ["var", "feeTax", "value"] }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
